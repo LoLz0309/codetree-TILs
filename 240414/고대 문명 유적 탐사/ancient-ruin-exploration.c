@@ -117,15 +117,6 @@ void rotate(){
                 }
                 if (r > resr) continue;
                 
-                if (x < resx){
-                    ress = s; 
-                    resr = r; 
-                    resx = x; 
-                    resy = y; 
-                    continue;
-                }
-                if (x > resx) continue;
-                
                 if (y < resy){
                     ress = s; 
                     resr = r; 
@@ -134,6 +125,15 @@ void rotate(){
                     continue;
                 }
                 if (y > resy) continue;
+                
+                if (x < resx){
+                    ress = s; 
+                    resr = r; 
+                    resx = x; 
+                    resy = y; 
+                    continue;
+                }
+                if (x > resx) continue;
             }
             rotate90(x, y);
         }
@@ -217,7 +217,7 @@ int main() {
     for (int t = 0; t < k; t++){
         rotate();
         score = getcontscore();
-        if (score) 
+        if (score)
             printf("%d ", score);
     }
     return 0;
