@@ -89,7 +89,7 @@ int rotate90(int x, int y){
     return getscore();
 }
 
-void rotate(){
+int rotate(){
     int resx, resy, resr;
     int ress = -1;
 
@@ -143,6 +143,7 @@ void rotate(){
         rotate90(resx, resy);
     }
     // debug();
+    return ress;
 }
 
 int remconn(){
@@ -211,14 +212,12 @@ int getcontscore(){
 }
 
 int main() {
-    int score;
     init();
 
     for (int t = 0; t < k; t++){
-        rotate();
-        score = getcontscore();
-        if (score)
-            printf("%d ", score);
+        if(!rotate())
+            return 0;
+        printf("%d ", getcontscore());
     }
     return 0;
 }
