@@ -72,9 +72,12 @@ void inputGerm()
     {
         for (int c = c1; c < c2; c++)
         {
+            if (Box[r][c])
+                GermSize[Box[r][c]]--;
             Box[r][c] = G;
         }
     }
+    GermSize[G] = (r2 - r1) * (c2 - c1);
 }
 
 void scanSize()
@@ -280,7 +283,10 @@ void moveGerm(int targetG)
         }
     }
     if (ar >= N || ac >= N)
+    {
+        GermSize[targetG] = 0;
         return;
+    }
     
     // Phase3: Process Adjust
     procAdjust(targetG, r1, c1, r2, c2, ar, ac);
@@ -401,7 +407,6 @@ int main() {
     {
         // Phase1
         inputGerm();
-        scanSize();
         checkConnect();
         // Phase2
         adjustGerm();
