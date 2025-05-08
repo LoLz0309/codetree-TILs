@@ -382,8 +382,12 @@ void reportGerm()
 
     for (int i = 1; i <= G; i++)
     {
+        if (GermSize[i] == 0)
+            continue;
         for (int j = i + 1; j <=G; j++)
         {
+            if (GermSize[j] == 0)
+                continue;
             if (checkNearby(i, j))
                 score += GermSize[i] * GermSize[j];
         }
